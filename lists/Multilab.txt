@@ -1,5 +1,3 @@
-import pandas as pd
-
 # Lista de produtos
 produtos = [
     ("ACEFLOR 100MG C/12 CPR", "705", "MULTILAB FARMA"),
@@ -89,15 +87,3 @@ produtos = [
     ("TORVILIP 40MG C/30 CPR REV", "66", "MULTILAB FARMA"),
     ("XAQUELLIV C/12 CPR", "1.195,00", "MULTILAB FARMA")
 ]
-
-# Criar planilha com as colunas especificadas
-df = pd.DataFrame(produtos, columns=["DSCPROD", "ESTOQUE", "DSCMARCA"])
-
-# Ordenar por nome do produto
-df_sorted = df.sort_values(by="DSCPROD")
-
-# Salvar como Excel 
-df_sorted.to_excel("estoque_ordenado.xlsx", index=False)
-
-# Imprimir o DataFrame ordenado no console
-# print(df_sorted)
