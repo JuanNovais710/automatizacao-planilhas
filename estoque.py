@@ -1,4 +1,7 @@
 import pandas as pd
+import numpy as np
+import random
+from datetime import datetime, timedelta, time
 
 # Lista de produtos em ordem alfabética
 produtos = [
@@ -173,6 +176,25 @@ produtos = [
 
 # Criar planilha com as seguintes colunas
 df = pd.DataFrame(produtos, columns=["DSCPROD", "ESTOQUE", "DSCMARCA"])
+
+# Adicionar as novas colunas com valores aleatórios
+df['preçoProduto'] = np.round(np.random.uniform(1, 150, size=len(df)), 2)
+df['qtdVendas'] = np.random.randint(0, 16, size=len(df))
+
+# Gerar datas aleatórias para 2025
+start_date = datetime(2025, 1, 1)
+end_date = datetime(2025, 12, 31)
+
+# Função retorna um objeto datetime completo
+def random_date_with_time(start, end):
+    random_day = start + timedelta(days=random.randint(0, (end - start).days))
+    random_hour = random.randint(9, 18)
+    random_minute = random.randint(0, 59)
+    random_second = random.randint(0, 59)
+    return random_day.replace(hour=random_hour, minute=random_minute, second=random_second)
+
+# A coluna `dataVenda` recebe o resultado completo da função, com data e hora
+df['dataVenda'] = [random_date_with_time(datetime(2025, 1, 1), datetime(2025, 12, 31)) for _ in range(len(df))]
 
 # Ordenar por nome do produto
 df_sorted = df.sort_values(by="DSCPROD")
