@@ -36,11 +36,12 @@ produtos = [
 ]
 
 # Criar planilha com as seguintes colunas
-df = pd.DataFrame(produtos, columns=["produto", "id", "laboratório", "preçoBase", "estoque"])
+df = pd.DataFrame(produtos, columns=["produto", "id", "laboratório", "preço-base", "qtdVendas"])
 
 # Adicionar as novas colunas com valores aleatórios
-#df['preçoProduto'] = np.round(np.random.uniform(1, 150, size=len(df)), 2)
-df['qtdVendas'] = np.random.randint(0, 16, size=len(df))
+#df['id'] = ["100" + "".join([str(random.randint(0, 9)) for _ in range(4)]) for _ in range(len(df))]
+#df['preçoBase'] = np.random.uniform(10.0, 500.0, size=len(df))
+#df['qtdVendas'] = np.random.randint(0, 77, size=len(df))
 
 # Gerar datas aleatórias para 2025
 start_date = datetime(2025, 1, 1)
