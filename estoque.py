@@ -7,8 +7,7 @@ from datetime import datetime, timedelta, time
 file_path = "C:\\Users\\user\\Desktop\\marcandoOTempo\\estoquePy\\lists\\NeoQuimica1.xlsx"
 
 # Lista de produtos em ordem alfabética
-import random
-df = pd.read_excel(file_path)
+df = pd.read_excel(file_path, nrows=199)
 
 # Inicializa o array de produtos
 produtos = []
@@ -23,8 +22,9 @@ df.rename(columns={
     }, inplace=True)
 
 # Adicionar as novas colunas com valores aleatórios
-#df['id'] = ["100" + "".join([str(random.randint(0, 9)) for _ in range(4)]) for _ in range(len(df))]
+df['id'] = ["100" + "".join([str(random.randint(0, 9)) for _ in range(4)]) for _ in range(len(df))]
 #df['preçoBase'] = np.random.uniform(10.0, 500.0, size=len(df))
+df['ESTOQUE'] = np.random.randint(0, 19999, size=len(df))
 df['QUANTIDADE DE VENDAS'] = np.random.randint(0, 500, size=len(df))
 
 # Gerar datas aleatórias para 2025
@@ -46,7 +46,7 @@ df['Data venda'] = [random_date_with_time(datetime(2025, 1, 1), datetime(2025, 1
 df_sorted = df.sort_values(by="PRODUTO")
 
 # Salvar como xlsx para Excel
-df_sorted.to_excel("finalFIle.xlsx", index=False)
+df_sorted.to_excel("finalSheet.xlsx", index=False)
 
 # Imprimir o DataFrame ordenado no console
 print(df_sorted)
