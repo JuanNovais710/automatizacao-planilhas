@@ -2,9 +2,13 @@ import pandas as pd
 import numpy as np
 import random
 from datetime import datetime, timedelta, time
+from pathlib import Path
 
-# Caminho da planilha a ser lida
-file_path = "C:\\Users\\user\\Desktop\\marcandoOTempo\\estoquePy\\lists\\Psicotropicos1.xlsx"
+# Gera script para receber o caminho do diretório
+script_dir = Path(__file__).resolve().parent
+
+# Constrói o caminho para a planilha, de forma relativa ao script
+file_path = script_dir / "lists" / "labs" / "Psicotropicos1.xlsx"
 
 # Lista de produtos em ordem alfabética
 df = pd.read_excel(file_path, nrows=199)
