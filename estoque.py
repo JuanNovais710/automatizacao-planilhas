@@ -4,7 +4,7 @@ import random
 from datetime import datetime, timedelta, time
 
 # Caminho da planilha a ser lida
-file_path = "C:\\Users\\user\\Desktop\\marcandoOTempo\\estoquePy\\lists\\NeoQuimica1.xlsx"
+file_path = "C:\\Users\\user\\Desktop\\marcandoOTempo\\estoquePy\\lists\\Psicotropicos1.xlsx"
 
 # Lista de produtos em ordem alfabética
 df = pd.read_excel(file_path, nrows=199)
@@ -17,13 +17,11 @@ df.rename(columns={
         'Cód. Interno': 'id',
         'Produto': 'PRODUTO',
         'Fornecedor': 'LABORATÓRIO',
-        'Preço base': 'PREÇO-BASE',
         'Sub-Grupo': 'SUB-GRUPO'
     }, inplace=True)
 
 # Adicionar as novas colunas com valores aleatórios
-df['id'] = ["100" + "".join([str(random.randint(0, 9)) for _ in range(4)]) for _ in range(len(df))]
-#df['preçoBase'] = np.random.uniform(10.0, 500.0, size=len(df))
+df['preçoBase'] = np.random.uniform(10.0, 500.0, size=len(df))
 df['ESTOQUE'] = np.random.randint(0, 19999, size=len(df))
 df['QUANTIDADE DE VENDAS'] = np.random.randint(0, 500, size=len(df))
 
